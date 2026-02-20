@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2019/09/ProvisioningSchema">
+  <pnp:Preferences Generator="SPFx2-Tooling" />
+  <pnp:Templates>
+    <pnp:ProvisioningTemplate ID="VATaskListTemplate" Version="1" Scope="Web">
+      <!-- Define content types at the template level -->
+      <pnp:ContentTypes>
+        <pnp:ContentType ID="0x0100AABBCCDDEE00112233445566778899" Name="VATask" Description="VATask content type for the VATaskList" Group="SPFx2">
+          <pnp:FieldRefs>
+            <pnp:FieldRef ID="{a1111111-1111-1111-1111-111111111111}" Name="TaskTitle" Required="TRUE" />
+            <pnp:FieldRef ID="{a2222222-2222-2222-2222-222222222222}" Name="AssignedTo" Required="FALSE" />
+            <pnp:FieldRef ID="{a3333333-3333-3333-3333-333333333333}" Name="Completed" Required="FALSE" />
+            <pnp:FieldRef ID="{a4444444-4444-4444-4444-444444444444}" Name="DueDate" Required="FALSE" />
+            <pnp:FieldRef ID="{a5555555-5555-5555-5555-555555555555}" Name="Details" Required="FALSE" />
+            <pnp:FieldRef ID="{b1111111-1111-1111-1111-111111111111}" Name="Priority" Required="FALSE" />
+            <pnp:FieldRef ID="{b2222222-2222-2222-2222-222222222222}" Name="Status" Required="FALSE" />
+            <pnp:FieldRef ID="{b3333333-3333-3333-3333-333333333333}" Name="Category" Required="FALSE" />
+            <pnp:FieldRef ID="{b4444444-4444-4444-4444-444444444444}" Name="EstimatedHours" Required="FALSE" />
+          </pnp:FieldRefs>
+        </pnp:ContentType>
+      </pnp:ContentTypes>
+
+      <pnp:Lists>
+        <pnp:ListInstance Title="VATaskList" Url="Lists/VATaskList" TemplateType="100" Description="VATaskList provisioned from repository boilerplate" ContentTypesEnabled="true">
+          <pnp:Fields>
+            <pnp:Field ID="{a1111111-1111-1111-1111-111111111111}" Name="TaskTitle" DisplayName="Task Title" Type="Text" Required="TRUE" />
+            <pnp:Field ID="{a2222222-2222-2222-2222-222222222222}" Name="AssignedTo" DisplayName="Assigned To" Type="User" Required="FALSE" />
+            <pnp:Field ID="{a3333333-3333-3333-3333-333333333333}" Name="Completed" DisplayName="Completed" Type="Boolean" Required="FALSE" Default="FALSE" />
+            <pnp:Field ID="{a4444444-4444-4444-4444-444444444444}" Name="DueDate" DisplayName="Due Date" Type="DateTime" Required="FALSE" />
+            <pnp:Field ID="{a5555555-5555-5555-5555-555555555555}" Name="Details" DisplayName="Details" Type="Note" Required="FALSE" />
+            <!-- Additional custom fields -->
+            <pnp:Field ID="{b1111111-1111-1111-1111-111111111111}" Name="Priority" DisplayName="Priority" Type="Choice" Format="Dropdown" Default="Medium">
+              <pnp:CHOICES>
+                <pnp:CHOICE>High</pnp:CHOICE>
+                <pnp:CHOICE>Medium</pnp:CHOICE>
+                <pnp:CHOICE>Low</pnp:CHOICE>
+              </pnp:CHOICES>
+            </pnp:Field>
+            <pnp:Field ID="{b2222222-2222-2222-2222-222222222222}" Name="Status" DisplayName="Status" Type="Choice" Format="Dropdown" Default="Open">
+              <pnp:CHOICES>
+                <pnp:CHOICE>Open</pnp:CHOICE>
+                <pnp:CHOICE>In Progress</pnp:CHOICE>
+                <pnp:CHOICE>Closed</pnp:CHOICE>
+              </pnp:CHOICES>
+            </pnp:Field>
+            <pnp:Field ID="{b3333333-3333-3333-3333-333333333333}" Name="Category" DisplayName="Category" Type="Choice" Format="Dropdown" Default="Task">
+              <pnp:CHOICES>
+                <pnp:CHOICE>Feature</pnp:CHOICE>
+                <pnp:CHOICE>Bug</pnp:CHOICE>
+                <pnp:CHOICE>Task</pnp:CHOICE>
+              </pnp:CHOICES>
+            </pnp:Field>
+            <pnp:Field ID="{b4444444-4444-4444-4444-444444444444}" Name="EstimatedHours" DisplayName="Estimated Hours" Type="Number" Required="FALSE" Default="1" />
+          </pnp:Fields>
+
+          <pnp:ContentTypes>
+            <pnp:ContentTypeRef ID="0x0100AABBCCDDEE00112233445566778899" />
+          </pnp:ContentTypes>
+
+          <!-- Sample data rows: three example tasks to seed the list for developer testing -->
+          <pnp:DataRows>
+            <pnp:DataRow>
+              <pnp:Field Name="Title">Initial setup</pnp:Field>
+              <pnp:Field Name="TaskTitle">Initial project setup and scaffolding</pnp:Field>
+              <pnp:Field Name="Details">Create project skeleton, install dependencies, and verify local serve.</pnp:Field>
+              <pnp:Field Name="DueDate">2026-03-01T00:00:00Z</pnp:Field>
+              <pnp:Field Name="Priority">Medium</pnp:Field>
+              <pnp:Field Name="Status">Open</pnp:Field>
+              <pnp:Field Name="Category">Task</pnp:Field>
+              <pnp:Field Name="EstimatedHours">4</pnp:Field>
+              <pnp:Field Name="Completed">FALSE</pnp:Field>
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:Field Name="Title">Design schema</pnp:Field>
+              <pnp:Field Name="TaskTitle">Design list schema and content types</pnp:Field>
+              <pnp:Field Name="Details">Define fields, content types, and views used by the web part.</pnp:Field>
+              <pnp:Field Name="DueDate">2026-03-05T00:00:00Z</pnp:Field>
+              <pnp:Field Name="Priority">High</pnp:Field>
+              <pnp:Field Name="Status">In Progress</pnp:Field>
+              <pnp:Field Name="Category">Feature</pnp:Field>
+              <pnp:Field Name="EstimatedHours">8</pnp:Field>
+              <pnp:Field Name="Completed">FALSE</pnp:Field>
+            </pnp:DataRow>
+            <pnp:DataRow>
+              <pnp:Field Name="Title">Sample complete</pnp:Field>
+              <pnp:Field Name="TaskTitle">Sample seeded item</pnp:Field>
+              <pnp:Field Name="Details">This is a completed sample task created during provisioning.</pnp:Field>
+              <pnp:Field Name="DueDate">2026-02-01T00:00:00Z</pnp:Field>
+              <pnp:Field Name="Priority">Low</pnp:Field>
+              <pnp:Field Name="Status">Closed</pnp:Field>
+              <pnp:Field Name="Category">Task</pnp:Field>
+              <pnp:Field Name="EstimatedHours">1</pnp:Field>
+              <pnp:Field Name="Completed">TRUE</pnp:Field>
+            </pnp:DataRow>
+          </pnp:DataRows>
+
+          <pnp:Views>
+            <pnp:View Type="HTML" Default="true" Name="All Items">
+              <pnp:ViewFields>
+                <pnp:FieldRef Name="Title" />
+                <pnp:FieldRef Name="TaskTitle" />
+                <pnp:FieldRef Name="AssignedTo" />
+                <pnp:FieldRef Name="DueDate" />
+                <pnp:FieldRef Name="Completed" />
+                <pnp:FieldRef Name="Priority" />
+                <pnp:FieldRef Name="Status" />
+              </pnp:ViewFields>
+            </pnp:View>
+          </pnp:Views>
+        </pnp:ListInstance>
+      </pnp:Lists>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+</pnp:Provisioning>
