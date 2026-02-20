@@ -1,0 +1,123 @@
+/**
+ * AppBoilerplate.module.scss
+ * Styles for the Single Part App Page boilerplate
+ */
+
+.appContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: var(--palette-white, #ffffff);
+}
+
+.navigationHeader {
+  background-color: var(--palette-neutralLight, #f3f2f1);
+  border-bottom: 1px solid var(--palette-neutralQuaternaryAlt, #e1dfdd);
+  padding: 0;
+  margin: 0;
+
+  :global(.ms-Pivot) {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.pivotNav {
+  :global(.ms-Pivot-link) {
+    padding: 10px 16px;
+    margin: 0;
+    font-weight: 500;
+
+    &:hover {
+      background-color: var(--palette-neutralQuaternaryAlt, #e1dfdd);
+    }
+  }
+
+  :global(.ms-Pivot-link.is-selected) {
+    border-bottom-color: var(--palette-themePrimary, #0078d4);
+    color: var(--palette-themePrimary, #0078d4);
+  }
+}
+
+.pageContainer {
+  overflow: auto;
+  flex: 1;
+}
+
+.pageContent {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.subtitle {
+  color: var(--palette-neutralSecondary, #605e5c);
+  margin-top: 4px;
+  display: block;
+}
+
+.cardTitle {
+  font-weight: 600;
+  color: var(--palette-neutralPrimary, #323130);
+}
+
+.cardValue {
+  color: var(--palette-themePrimary, #0078d4);
+  font-weight: 700;
+}
+
+.metricCard {
+  padding: 16px;
+  border-radius: 4px;
+  border: 1px solid var(--palette-neutralQuaternaryAlt, #e1dfdd);
+  background-color: var(--palette-white, #ffffff);
+}
+
+.successColor {
+  color: var(--palette-green, #107c10);
+}
+
+.warningColor {
+  color: var(--palette-orange, #ff8c00);
+}
+
+.taskRow {
+  padding: 12px;
+  border-bottom: 1px solid var(--palette-neutralQuaternaryAlt, #e1dfdd);
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: var(--palette-neutralLighter, #f7f6f5);
+  }
+}
+
+.statusCompleted {
+  color: var(--palette-green, #107c10);
+  font-weight: 600;
+}
+
+.statusPending {
+  color: var(--palette-orange, #ff8c00);
+  font-weight: 600;
+}
+
+.sectionTitle {
+  font-weight: 600;
+  color: var(--palette-neutralPrimary, #323130);
+  margin-bottom: 12px;
+  display: block;
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .pageContent {
+    padding: 12px;
+  }
+
+  .taskRow {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

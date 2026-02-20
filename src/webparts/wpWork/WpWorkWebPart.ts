@@ -3,32 +3,28 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   type IPropertyPaneConfiguration,
-  PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
-import * as strings from 'WpWorkWebPartStrings';
 import WpWork from './components/WpWork';
 import { IWpWorkProps } from './components/IWpWorkProps';
 
 export interface IWpWorkWebPartProps {
-  description: string;
+  // No web part properties needed for this Single Part App Page
+  // All configuration can be managed through the Settings page
 }
 
 export default class WpWorkWebPart extends BaseClientSideWebPart<IWpWorkWebPartProps> {
 
   private _isDarkTheme: boolean = false;
-  private _environmentMessage: string = '';
 
   public render(): void {
     const element: React.ReactElement<IWpWorkProps> = React.createElement(
       WpWork,
       {
-        description: this.properties.description,
+        context: this.context,
         isDarkTheme: this._isDarkTheme,
-        environmentMessage: this._environmentMessage,
-        hasTeamsContext: !!this.context.sdks.microsoftTeams,
         userDisplayName: this.context.pageContext.user.displayName
       }
     );
@@ -37,38 +33,7 @@ export default class WpWorkWebPart extends BaseClientSideWebPart<IWpWorkWebPartP
   }
 
   protected onInit(): Promise<void> {
-    return this._getEnvironmentMessage().then(message => {
-      this._environmentMessage = message;
-    });
-  }
-
-
-
-  private _getEnvironmentMessage(): Promise<string> {
-    if (!!this.context.sdks.microsoftTeams) { // running in Teams, office.com or Outlook
-      return this.context.sdks.microsoftTeams.teamsJs.app.getContext()
-        .then(context => {
-          let environmentMessage: string = '';
-          switch (context.app.host.name) {
-            case 'Office': // running in Office
-              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentOffice : strings.AppOfficeEnvironment;
-              break;
-            case 'Outlook': // running in Outlook
-              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentOutlook : strings.AppOutlookEnvironment;
-              break;
-            case 'Teams': // running in Teams
-            case 'TeamsModern':
-              environmentMessage = this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentTeams : strings.AppTeamsTabEnvironment;
-              break;
-            default:
-              environmentMessage = strings.UnknownEnvironment;
-          }
-
-          return environmentMessage;
-        });
-    }
-
-    return Promise.resolve(this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentSharePoint : strings.AppSharePointEnvironment);
+    return Promise.resolve();
   }
 
   protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {
@@ -102,15 +67,14 @@ export default class WpWorkWebPart extends BaseClientSideWebPart<IWpWorkWebPartP
       pages: [
         {
           header: {
-            description: strings.PropertyPaneDescription
+            description: 'Single Part App Page Configuration'
           },
           groups: [
             {
-              groupName: strings.BasicGroupName,
+              groupName: 'General Settings',
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
-                })
+                // Configuration fields can be added here as needed
+                // For now, this Single Part App Page is self-contained
               ]
             }
           ]

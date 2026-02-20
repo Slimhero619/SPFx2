@@ -1,6 +1,11 @@
+/**
+ * IAppBoilerplateProps.ts
+ * Props interface for AppBoilerplate component
+ */
+
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
 
-export interface IWpWorkProps {
+export interface IAppBoilerplateProps {
   /**
    * SPFx web part context for accessing SharePoint APIs
    */
