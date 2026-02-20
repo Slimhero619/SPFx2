@@ -1,0 +1,19 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "useGulp": false,
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.22.0",
+    "sdksVersions": {},
+    "version": "1.22.2",
+    "libraryName": "test-wp",
+    "libraryId": "4edba728-3544-4a74-9726-c287e5853cd0",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "TestWP",
+    "solutionShortDescription": "TestWP description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

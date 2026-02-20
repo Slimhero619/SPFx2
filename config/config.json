@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "wp-work-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/wpWork/WpWorkWebPart.js",
+          "manifest": "./src/webparts/wpWork/WpWorkWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "WpWorkWebPartStrings": "lib/webparts/wpWork/loc/{locale}.js"
+  }
+}
